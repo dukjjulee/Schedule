@@ -1,7 +1,6 @@
 package org.example.schedule.dto;
 
 import lombok.Getter;
-import org.example.schedule.entity.Schedule;
 
 import java.time.LocalDateTime;
 
@@ -9,10 +8,14 @@ import java.time.LocalDateTime;
 public class ScheduleResponseDto {
 
     private final Long id;
+    private final String name;
+    private final String password;
     private final String title;
     private final String contents;
     private final LocalDateTime createdAt;
-    private final LocalDateTime modugiedA;
+    private final LocalDateTime modugiedAt;
+
+
     public ScheduleResponseDto(
             Long id,
             String title,
@@ -20,12 +23,14 @@ public class ScheduleResponseDto {
             String name,
             String password,
             LocalDateTime createdAt,
-            LocalDateTime modugiedAt, Long id1, String title1, String contents1, LocalDateTime createdAt1, LocalDateTime modugiedA
+            LocalDateTime modugiedAt
     ) {
-        this.id = id1;
-        this.title = title1;
-        this.contents = contents1;
-        this.createdAt = createdAt1;
-        this.modugiedA = modugiedA;
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.name = name;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.modugiedAt = modugiedAt;
     }
 }

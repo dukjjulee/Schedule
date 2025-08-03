@@ -12,7 +12,7 @@ POST
 
     Response
     {
-        "ID":"MINYONG1234"
+        "ID":"KANGMINYONG1234"
         "일정 제목":"Spring 기초 세션"
         "일정 내용":"Spring 기초 강의 듣기"
         "작성자명":"강민영"
@@ -38,7 +38,7 @@ GET
 ]
 
 
-단일 일정 조회
+선택 일정 조회
 GET
 {
     "ID":"MINYONG1234"

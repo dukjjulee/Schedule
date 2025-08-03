@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.schedule.dto.ScheduleRequestDto;
 import org.example.schedule.dto.ScheduleResponseDto;
 import org.example.schedule.service.ScheduleService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +19,14 @@ public class ScheduleController {
             @RequestBody ScheduleRequestDto scheduleRequestDto
     ) {
         return scheduleService.save(scheduleRequestDto);
+    }
+
+    @GetMapping("/schedules")
+    public List<ScheduleResponseDto> getSchedule(){return scheduleService.findSchedule();}
+
+    @GetMapping("/schedule/{scheduleId}")
+    public ScheduleResponseDto getSchedule(@PathVariable Long ScheduleId) {
+        return scheduleService.findSchedule(scheduleId);
     }
 }
 
