@@ -1,4 +1,4 @@
-package org.example.scgedule.entity;
+package org.example.schedule.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,19 +14,19 @@ public class Schedule {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titly;
+    private String title;
     private String contents;
     private String name;
     private String password;
 
-    public Schedule(String titly, String contents, String name, String password) {
-        this.titly = titly;
+    public Schedule(String title, String contents, String name, String password) {
+        this.title = title;
         this.contents = contents;
         this.name = name;
         this.password = password;
     }
-    public void updateName(String titly, String contents, String name, String password) {
-        this.titly = titly;
+    public void updateName(String title, String contents, String name, String password) {
+        this.title = title;
         this.contents = contents;
         this.name = name;
         this.password = password;
