@@ -93,4 +93,13 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
+
+    @Transactional(readOnly = true)
+    public void deleteSchedule(Long scheduleId, ScheduleRequestDto scheduleRequestDto) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalArgumentException("해당하는 ScheduleID가 없습니다."));
+        if(!schedule.getPassword().equals(scheduleRequestDto.getPassword())) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+    }
 }

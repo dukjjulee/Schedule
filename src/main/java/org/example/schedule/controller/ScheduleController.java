@@ -3,7 +3,6 @@ package org.example.schedule.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.schedule.dto.ScheduleRequestDto;
 import org.example.schedule.dto.ScheduleResponseDto;
-import org.example.schedule.entity.Schedule;
 import org.example.schedule.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +35,15 @@ public class ScheduleController {
             @RequestBody ScheduleRequestDto scheduleRequestDto
     ) {
         return scheduleService.update(scheduleId,scheduleRequestDto);
+    }
+
+    @DeleteMapping("/schedules/{schedule")
+    public String deleteSchedule(
+            @PathVariable Long scheduleId,
+            @RequestBody ScheduleRequestDto dto)
+    {
+        scheduleService.deleteSchedule(scheduleId, dto);
+        return "일정이 삭제 되었습니다.";
     }
 }
 
