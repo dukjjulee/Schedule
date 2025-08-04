@@ -34,10 +34,8 @@ public class Schedule {
         this.name = name;
         this.password = password;
     }
-    public void updateName(String title, String contents, String name) {
+    public void updateName(String title, String name) {
         this.title = title;
-        this.contents = contents;
         this.name = name;
-        this.password = password;
     }
 }

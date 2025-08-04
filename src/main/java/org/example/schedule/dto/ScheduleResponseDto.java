@@ -1,6 +1,7 @@
 package org.example.schedule.dto;
 
 import lombok.Getter;
+import org.example.schedule.entity.Schedule;
 
 import java.time.LocalDateTime;
 

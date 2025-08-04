@@ -26,10 +26,15 @@ public class ScheduleService {
                 scheduleRequestDto.getName(),
                 scheduleRequestDto.getPassword()
         );
-
         Schedule savedSchedule = scheduleRepository.save(saveSchedule);
-
-        return new ScheduleResponseDto(savedSchedule);
+        return new ScheduleResponseDto(
+                savedSchedule.getId(),
+                savedSchedule.getTitle(),
+                savedSchedule.getContents(),
+                savedSchedule.getName(),
+                savedSchedule.getCreatedAt(),
+                savedSchedule.getModifiedAt()
+        );
     }
 
     @Transactional(readOnly = true)
@@ -50,16 +55,12 @@ public class ScheduleService {
         }
         return dtos;
     }
-    @Transactional
-    public ScheduleResponseDto update(Long scheduleId,ScheduleRequestDto scheduleRequestDto) {
+
+    @Transactional (readOnly = true)
+    public ScheduleResponseDto findSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
-                () -> new IllegalArgumentException("해당하는 ScheduleID가 없습니다.")
-        );
-        schedule.updateName(
-                scheduleRequestDto.getTitle(),
-                scheduleRequestDto.getContents(),
-                scheduleRequestDto.getName()
-                );
+                () -> new IllegalArgumentException("해당하는 ScheduleID가 없습니다."));
+
         return new ScheduleResponseDto(
                 schedule.getId(),
                 schedule.getTitle(),
@@ -69,6 +70,27 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
+    @Transactional
+    public ScheduleResponseDto update(Long scheduleId,ScheduleRequestDto scheduleRequestDto) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalArgumentException("해당하는 ScheduleID가 없습니다.")
+        );
+        if(!schedule.getPassword().equals(scheduleRequestDto.getPassword())) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
 
+        schedule.updateName(
+                scheduleRequestDto.getTitle(),
+                scheduleRequestDto.getName()
+                );
 
+        return new ScheduleResponseDto(
+                schedule.getId(),
+                schedule.getTitle(),
+                schedule.getContents(),
+                schedule.getName(),
+                schedule.getCreatedAt(),
+                schedule.getModifiedAt()
+        );
+    }
 }
