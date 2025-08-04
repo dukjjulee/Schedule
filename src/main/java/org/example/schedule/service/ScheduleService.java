@@ -24,9 +24,7 @@ public class ScheduleService {
                 scheduleRequestDto.getTitle(),
                 scheduleRequestDto.getContents(),
                 scheduleRequestDto.getName(),
-                scheduleRequestDto.getPassword(),
-                scheduleRequestDto.getCreatedAt(),
-                scheduleRequestDto.getModugiedAt()
+                scheduleRequestDto.getPassword()
         );
 
         Schedule savedSchedule = scheduleRepository.save(saveSchedule);
@@ -46,10 +44,31 @@ public class ScheduleService {
                     schedule.getContents(),
                     schedule.getName(),
                     schedule.getCreatedAt(),
-                    schedule.getModugiedAt()
+                    schedule.getModifiedAt()
             );
             dtos.add(scheduleResponseDto);
         }
         return dtos;
     }
+    @Transactional
+    public ScheduleResponseDto update(Long scheduleId,ScheduleRequestDto scheduleRequestDto) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
+                () -> new IllegalArgumentException("해당하는 ScheduleID가 없습니다.")
+        );
+        schedule.updateName(
+                scheduleRequestDto.getTitle(),
+                scheduleRequestDto.getContents(),
+                scheduleRequestDto.getName()
+                );
+        return new ScheduleResponseDto(
+                schedule.getId(),
+                schedule.getTitle(),
+                schedule.getContents(),
+                schedule.getName(),
+                schedule.getCreatedAt(),
+                schedule.getModifiedAt()
+        );
+    }
+
+
 }
