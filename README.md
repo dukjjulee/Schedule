@@ -2,23 +2,20 @@ POST
 
     Request
     {
-        "일정 제목":"Spring 기초 세션"
-        "일정 내용":"Spring 기초 강의 듣기"
-        "작성자명":"강민영"
-        "비밀번호":"1014"
-        "작성일":"2025-08-01T15:00:00"
-        "수정일":"2025-08-01T15:00:00"
+        "title":"Spring 기초 세션"
+        "contents":"Spring 기초 강의 듣기"
+        "name":"강민영"
+        "password":"1014"
     }
 
     Response
     {
-        "ID":"KANGMINYONG1234"
-        "일정 제목":"Spring 기초 세션"
-        "일정 내용":"Spring 기초 강의 듣기"
-        "작성자명":"강민영"
-        "비밀번호":"1014"
-        "작성일":"2025-08-01T15:00:00"
-        "수정일":"2025-08-01T15:00:00"
+        "id":"KANGMINYONG1234"
+        "title":"Spring 기초 세션"
+        "contents":"Spring 기초 강의 듣기"
+        "name":"강민영"
+        "createdAt":"2025-08-01T15:00:00"
+        "modifiedAt":"2025-08-01T15:00:00"
     }
 
 
@@ -27,45 +24,49 @@ POST
 GET
 [
     {
-        "ID":"MINYONG1234"
-        "일정 제목":"Spring 기초 세션"
-        "일정 내용":"Spring 기초 강의 듣기"
-        "작성자명":"강민영"
-        "비밀번호":"1014"
-        "작성일":"2025-08-01T15:00:00"
-        "수정일":"2025-08-01T15:00:00"
+        "id":"MINYONG1234"
+        "title":"Spring 기초 세션"
+        "contents":"Spring 기초 강의 듣기"
+        "name":"강민영"
+        "createdAt":"2025-08-01T15:00:00"
+        "modifiedAt":"2025-08-01T15:00:00"
     }
 ]
 
 
 선택 일정 조회
 GET
+Request
 {
-    "ID":"MINYONG1234"
-    "일정 제목":"Spring 기초 세션"
-    "일정 내용":"Spring 기초 강의 듣기"
-    "작성자명":"강민영"
-    "비밀번호":"1014"
-    "작성일":"2025-08-01T15:00:00"
-    "수정일":"2025-08-01T15:00:00"
+    "title":"Spring 기초 세션"
+    "name":Spring 기초 강의 듣기"
+}
+
+{
+    "id":"MINYONG1234"
+    "title":"Spring 기초 세션"
+    "contents":"Spring 기초 강의 듣기"
+    "name":"강민영"
+    "createdAt":"2025-08-01T15:00:00"
+    "modifiedAt":"2025-08-01T15:00:00"
 }
 
 PUT
 
 Request
 {
-    "일정제목":"Spring 기초 세션"
-    "작성자명":Spring 기초 강의 듣기"
-    "비밀번호":"1014"
+    "title":"Spring 기초 세션"
+    "name":Spring 기초 강의 듣기"
+    "password":"1014"
 }
 Response
 {
     "ID":"MINYONG1234"
-    "일정 제목":"Spring 기초 세션"
-    "일정 내용":"Spring 기초 강의 듣기"
-    "작성자명":"강민영"
-    "작성일":"2025-08-01T15:00:00"
-    "수정일":"2025-08-01T15:00:00"
+    "title":"Spring 기초 세션"
+    "contents":"Spring 기초 강의 듣기"
+    "name":"강민영"
+    "createdAt":"2025-08-01T15:00:00"
+    "modifiedAt":"2025-08-01T15:00:00"
 }
 DELETE
 
